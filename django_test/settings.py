@@ -4,7 +4,7 @@ import dj_database_url
 from dotenv import load_dotenv
 
 # 載入 .env 檔案
-load_dotenv()
+load_dotenv('.env.local')
 
 # 使用環境變數
 DEBUG = os.getenv('DEBUG', False)
