@@ -13,6 +13,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+# 載入 .env 檔案
+load_dotenv()
+
+# 使用環境變數
+DEBUG = os.getenv('DEBUG', False)
+SECRET_KEY = os.getenv('SECRET_KEY')
+DATABASE_URL = os.getenv('DATABASE_URL')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +31,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0__$m%je8s&ep!z36!s4zq3lmjqu^zol175njo+j6uyrr2fah3'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = 'RENDER' not in os.environ
+# DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -92,7 +101,7 @@ WSGI_APPLICATION = 'django_test.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
