@@ -6,7 +6,7 @@ gunicorn==23.0.0
 packaging==24.2
 pip-autoremove==0.10.0
 pipdeptree==2.24.0
+python-dotenv==1.0.1
 sqlparse==0.5.1
 typing_extensions==4.12.2
 whitenoise==6.8.2
-psycopg2-binary==2.9.9
