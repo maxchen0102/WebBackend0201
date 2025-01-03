@@ -11,3 +11,11 @@ def index(request):
     }
 
     return render(request, 'blog/index.html', context)
+
+
+def hello_world(request):
+    return HttpResponse("Hello, World!")
+
+
+def greet_user(request, name):
+    return HttpResponse(f"Hello, {name}!")
