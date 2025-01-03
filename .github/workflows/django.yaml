@@ -9,38 +9,19 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-    # 檢出程式碼
     - uses: actions/checkout@v3
 
-    # 設定 Python 環境
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
-    # 安裝依賴
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 加載環境變數
-    - name: Set Environment Variables
-      env:
-        DEBUG: ${{ secrets.DEBUG }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-
-    # 遷移資料庫
-    - name: Run Migrations
-      run: |
-        python manage.py makemigrations
-        python manage.py migrate
-
-    # 執行測試
     - name: Run Tests
       run: |
         python manage.py test
