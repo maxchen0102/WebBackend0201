@@ -1,16 +1,16 @@
 from pathlib import Path
 import os
-import dj_database_url
-from dotenv import load_dotenv
-
-# 載入 .env 檔案
-load_dotenv('.env.local')
-
 # 使用環境變數 -> 在production 的時候，會由render提供
 DEBUG = os.getenv('DEBUG', False)
 SECRET_KEY = os.getenv('SECRET_KEY')
 DATABASE_URL = os.getenv('DATABASE_URL')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','*').split(',')
+
+import dj_database_url
+from dotenv import load_dotenv
+
+# 載入 .env 檔案
+load_dotenv('.env.local')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
