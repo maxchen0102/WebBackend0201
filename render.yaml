@@ -1,0 +1,22 @@
+# render.yaml
+services:
+  - type: web
+    name: WebBackend0201  # 這裡要填寫你在 Render 上現有的應用名稱
+    env: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn django_test.wsgi:application  # 使用你實際的項目名
+    branch: main  # 指定你要部署的分支
+    repo: https://github.com/maxchen0102/WebBackend0201  # 你的 GitHub 倉庫地址
+    autoDeploy: true  # 啟用自動部署
+    envVars:
+          - key: ALLOWED_HOSTS
+            sync: false  # 這表示保持使用 Render dashboard 中的值
+          - key: DATABASE_URL
+            sync: false
+          - key: DEBUG
+            sync: false
+          - key: PYTHON_VERSION
+            sync: false
+          - key: SECRET_KEY
+            sync: false
+          # 其他環境變數會從 Render Dashboard 自動帶入
